@@ -1,4 +1,4 @@
-# usage: python resizer.py 3 4
+# usage: sudo python resizer.py 3 4
 # (for worker node 3 of 4)
 
 from subprocess import check_output
@@ -48,7 +48,7 @@ for f in J:
     fnew = f.replace('.JPG', '_t.JPG')
     S = 'aws s3 cp FILE s3://poland-card1/FILE'
     S = S.replace('FILE', fnew)
-    check_output(S.split)
+    check_output(S.split())
 
 te = time()
 
