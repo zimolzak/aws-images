@@ -1,12 +1,15 @@
 # usage: sudo python resizer.py 3 4
+#        sudo python resider.py 3 4 dry
 # (for worker node 3 of 4)
 
-#from subprocess import check_output
+from subprocess import check_output
 from sys import argv
 from time import time
 
-def check_output(x):
-    print(x)
+for a in argv:
+    if a == 'dry':
+        def check_output(x):
+            print(x)
 
 ts = time()
 
@@ -26,28 +29,28 @@ offset = (myid - 1) * n_per_worker
 
 start = int(round(offset))
 end = int(round(offset + n_per_worker))
-#print(J[start:end])
+Js = J[start:end]
 
 
 ## Operate on each file.
 
 print('\nDownloading...')
-for f in J:
+for f in Js:
     check_output(['curl', '-O',
                   'https://s3.amazonaws.com/poland-card1/' + f])
 
 print('\nResizing...')
 t0 = time()
-for f in J:
+for f in Js:
     fnew = f.replace('.JPG', '_t.JPG')
-    check_output(['convert', f, '-resize', '50%', fnew])
+    check_output(['convert', f, '-resize', '4%', fnew])
 t1 = time()
 print()
 print('Resize took', t1 - t0, 'sec =',
       round((t1 - t0) / 60.0, 1), 'min.')
 
 print('\nUploading...')
-for f in J:
+for f in Js:
     fnew = f.replace('.JPG', '_t.JPG')
     S = 'aws s3 cp FILE s3://poland-card1/FILE'
     S = S.replace('FILE', fnew)
