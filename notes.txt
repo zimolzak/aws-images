@@ -1,0 +1,14 @@
+init dload:
+about 4 min
+
+resize:
+182
+190
+190
+188
+
+upload
+213
+214
+220
+211
