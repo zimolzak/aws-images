@@ -2,7 +2,7 @@ from subprocess import check_output
 
 base = "aws s3api put-object-acl --bucket poland-card1 --key XXXX --acl public-read"
 
-J = open('jpgs.txt').read().splitlines()
+J = open('thumb_in_prog.txt').read().splitlines()
 
 for f in J:
     fnew = f.replace('.JPG', '_t.JPG')
