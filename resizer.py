@@ -1,9 +1,12 @@
 # usage: sudo python resizer.py 3 4
 # (for worker node 3 of 4)
 
-from subprocess import check_output
+#from subprocess import check_output
 from sys import argv
 from time import time
+
+def check_output(x):
+    print(x)
 
 ts = time()
 
