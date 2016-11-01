@@ -15,8 +15,10 @@ specified.
 
 1. `python3 publicize.py` (this is unrelated ad-hoc stuff to fix some
    file permissions).
-2. `make`
+2. `make jpgs.txt`
 3. commit jpgs.txt & push to git repo
 4. _remotely:_ clone the git repo
-5. _remotely (for example):_ `sudo python3 resizer.py 2 4`
-6. whatever it takes to make index.html
+5. _remotely:_ `aws configure` and enter keys w/ S3 permissions.
+6. _remotely (for example):_ `sudo python3 resizer.py 2 4`
+7. `make public_thumbnails`
+8. whatever it takes to make index.html
